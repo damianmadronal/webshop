@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
+        {{$cartItems[0]}}
         </div>
     </div>
 </div>
