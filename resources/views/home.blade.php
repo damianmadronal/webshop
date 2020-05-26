@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-        {{$cartItems[0]}}
+        <h1>WEBSHOP</h1>
         </div>
     </div>
 </div>

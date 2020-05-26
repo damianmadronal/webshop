@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -21,6 +22,10 @@
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a15bfdfa1d.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
 </head>
 <body>
@@ -85,3 +90,10 @@
     </div>
 </body>
 </html>
+<script>
+$(function() {
+    setTimeout(function() {
+        $(".alert").slideUp();
+    }, 5000);
+});
+</script>
