@@ -20,11 +20,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('category_overview', 'CategoryController@index');
 Route::get('category/{id}', 'ProductController@productOverview');
-Route::get('product/{id}', 'ProductController@productIndex');
 
+Route::get('product/{id}', 'ProductController@productIndex');
 Route::get('/product/add/{id}', [
     'uses' => 'ProductController@add',
     'as' => 'product.add'
 ]);
+
+Route::get('/shopping-cart', 'ShoppingCartController@getCart');

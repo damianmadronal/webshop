@@ -45,3 +45,8 @@
     -webkit-line-clamp: 4 !important;
     line-height: 17px !important;
 }
+
+.order-details {
+    padding: 30px;
+    background-color: lightgrey;
+}
