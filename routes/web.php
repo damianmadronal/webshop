@@ -21,13 +21,16 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+// Routes for category pages
 Route::get('category_overview', 'CategoryController@index');
 Route::get('category/{id}', 'ProductController@productOverview');
 
+// Routes for product pages
 Route::get('product/{id}', 'ProductController@productIndex');
 Route::get('/product/add/{id}', [
     'uses' => 'ProductController@add',
     'as' => 'product.add'
 ]);
 
+// Routes for shopping cart page
 Route::get('/shopping-cart', 'ShoppingCartController@getCart');
