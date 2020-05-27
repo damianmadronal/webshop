@@ -2,6 +2,8 @@
 
 namespace App\Cart;
 
+use App\Product;
+
 use Illuminate\Http\Request;
 
 class Cart
@@ -20,11 +22,19 @@ class Cart
         }
     }
 
-    public function add(Request $request, $product)
+    /**
+     * Add item to the Cart session
+     *
+     * @param Request $request
+     * @param Product $product
+     * @return void
+     */
+    public function add(Request $request, Product $product)
     {
         $newItem = [
-            "id" => $product->id,
-            "quantity" => $this->quantity
+            'quantity' => 0,
+            'price' => $product->price,
+            'item' => $product
         ];
 
         if ($this->items && array_key_exists($product->id, $this->items)) {
@@ -32,9 +42,21 @@ class Cart
         }
 
         $newItem["quantity"]++;
-
+        $newItem['price'] = $product->price * $newItem['quantity'];
         $this->items[$product->id] = $newItem;
+        $this->quantity++;
+        $this->price += $product->price;
 
         $request->session()->put('cart', $this);
+    }
+
+    /**
+     * Get all items from items array
+     *
+     * @return void
+     */
+    public function getAll()
+    {
+        return $this->items;
     }
 }
