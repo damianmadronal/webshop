@@ -42,14 +42,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    <li>
-                        <a href="/category_overview">Category</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/category_overview">Category</a>
                     </li>
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>Shopping cart
+                            <span class="badge">
+                            {{Session::has('cart') ? Session::get('cart')->quantity : ''}}
+                            </span>
+                        </a>
+                    </li>
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
