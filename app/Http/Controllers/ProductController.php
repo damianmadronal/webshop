@@ -11,6 +11,17 @@ use Session;
 
 class ProductController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Gives back products and category name to view
      *
@@ -51,7 +62,9 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($request, Product::find($id));
         // $request->session()->flush();
-        dd($request->session()->get('cart'));
+        // dd($request->session()->get('cart'));
+
+        // dd($cart->getAll());
 
         return back()->with('success', 'Succesfully added item to cart!');
     }
