@@ -19,6 +19,12 @@ class ShoppingCartController extends Controller
         $this->middleware('auth');
     }
 
+
+    /**
+     * Give back cart items to view
+     *
+     * @return void
+     */
     public function getCart()
     {
         if (!Session::has('cart')) {

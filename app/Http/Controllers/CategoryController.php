@@ -17,6 +17,11 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Give back categories to view
+     *
+     * @return void
+     */
     public function index()
     {
         $categories = DB::table('category')->get();
