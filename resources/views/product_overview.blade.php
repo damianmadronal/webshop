@@ -21,7 +21,7 @@
                             <div class="card-body text-center">
                                 <h2 class="card-title">{{ $product->name }}</h2>
                                 <p class="short-text" class="card-text">{{ $product->description }}</p>
-                                <button class="btn btn-danger"><a class="text-white text-decoration-none" href="/product/add/{{$product->id}}">Add<i class="fas fa-shopping-cart"></i></a></button>
+                                <button class="btn btn-danger"><a class="text-white text-decoration-none" href="{{ route('product.add', ['id' => $product->id]) }}">Add<i class="fas fa-shopping-cart"></i></a></button>
                             </div>
                         </a>
                     </div>

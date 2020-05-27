@@ -24,4 +24,7 @@ Route::get('category_overview', 'CategoryController@index');
 Route::get('category/{id}', 'ProductController@productOverview');
 Route::get('product/{id}', 'ProductController@productIndex');
 
-Route::get('/product/add/{id}', 'Productcontroller@add')->name('product');
+Route::get('/product/add/{id}', [
+    'uses' => 'ProductController@add',
+    'as' => 'product.add'
+]);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart\Cart;
 use Illuminate\Http\Request;
+use App\Product;
 use DB;
 
 use Session;
@@ -27,14 +28,9 @@ class ProductController extends Controller
 
     public function add(Request $request, $id)
     {
-        // $product = \App\Product::where('id', $id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-
-        $cart->add($id);
-
-        $request->session()->put('cart', $cart);
-        // $request->session()->flush();
+        $cart->add($request, Product::find($id));
         // dd($request->session()->get('cart'));
 
         return back()->with('success', 'Succesfully added item to cart!');
