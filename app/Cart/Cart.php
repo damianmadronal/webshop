@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class Cart
 {
-    private $items = [];
+    public $items = [];
 
-    private $quantity = 0;
-    private $price = 0;
+    public $quantity = 0;
+    public $price = 0;
 
     public function __construct($oldCart)
     {
@@ -48,15 +48,5 @@ class Cart
         $this->price += $product->price;
 
         $request->session()->put('cart', $this);
-    }
-
-    /**
-     * Get all items from items array
-     *
-     * @return void
-     */
-    public function getAll()
-    {
-        return $this->items;
     }
 }
