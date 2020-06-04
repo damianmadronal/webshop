@@ -34,3 +34,18 @@ Route::get('/product/add/{id}', [
 
 // Routes for shopping cart page
 Route::get('/shopping-cart', 'ShoppingCartController@getCart');
+Route::post('/shoppingCart/update/{id}', [
+    'uses' => 'ShoppingCartController@updateQuantity',
+    'as' => 'shoppingCart.update'
+]);
+Route::get('delete', 'ShoppingCartController@deleteItem');
+Route::get('delete/{id}', [
+    'uses' => 'shoppingCartController@deleteItem',
+    'as' => 'product.delete'
+]);
+
+// Routes for ordering
+Route::get('order', [
+    'uses' => 'shoppingCartController@order',
+    'as' => 'product.order'
+]);
