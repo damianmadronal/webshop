@@ -49,4 +49,29 @@ class Cart
 
         $request->session()->put('cart', $this);
     }
+
+    /**
+     * Get total quantity of every product
+     */
+    public function getTotalQuantity()
+    {
+
+        $totalQuantity = 0;
+        foreach ($this->items as $product) {
+            $totalQuantity += $product['quantity'];
+        }
+        return $totalQuantity;
+    }
+
+    /**
+     * Get total price of every product
+     */
+    public function getTotalPrice()
+    {
+        $totalPrice = 0;
+        foreach ($this->items as $product) {
+            $totalPrice += $product['price'];
+        }
+        return $totalPrice;
+    }
 }
