@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/quantity.js') }}"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -23,9 +24,10 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a15bfdfa1d.js" crossorigin="anonymous"></script>
 
+    <!-- JQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
 </head>
 <body>
@@ -50,10 +52,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href="/orders">Orders</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>Shopping cart
                             <span class="badge">
-                            {{Session::has('cart') ? Session::get('cart')->quantity : ''}}
+                            {{Session::has('cart') ? Session::get('cart')->getTotalQuantity() : ''}}
                             </span>
                         </a>
                     </li>
@@ -104,4 +109,5 @@ $(function() {
         $(".alert").slideUp();
     }, 5000);
 });
+
 </script>
