@@ -50,3 +50,20 @@
     padding: 30px;
     background-color: lightgrey;
 }
+
+a {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+#quantity {
+    width: 40px;
+}
+
+small {
+    color: grey;
+}
