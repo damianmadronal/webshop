@@ -49,3 +49,5 @@ Route::get('order', [
     'uses' => 'shoppingCartController@order',
     'as' => 'product.order'
 ]);
+
+Route::get('/orders', 'OrderController@index');
