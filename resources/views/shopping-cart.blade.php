@@ -14,7 +14,7 @@
                 <div class="cart-item-container">
                     <div class="row py-5">
                         <div class="col">
-                            <img src="{{ asset("img/middlefinger.png") }}" height="150" width="200" alt="cart-item-image">
+                            <img src="{{ asset("img/doctor.jpg") }}" height="150" width="200" alt="cart-item-image">
                         </div>
                         <div class="col">
                             <h2>{{$product['item']->name}}</h2>
