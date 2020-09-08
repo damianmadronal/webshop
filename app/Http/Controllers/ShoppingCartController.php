@@ -91,7 +91,7 @@ class ShoppingCartController extends Controller
 
         $content = [
             "cart" => serialize($cart),
-            "user_id" => 1
+            "user_id" => Auth()->user()->id
         ];
 
         DB::table("orders")->insert($content);
