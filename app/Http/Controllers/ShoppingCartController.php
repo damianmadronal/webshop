@@ -39,7 +39,7 @@ class ShoppingCartController extends Controller
         $cart->setQuantity($request, $id, $request->input("quantityInput"));
 
         return view('shopping-cart')->with([
-            'cart' => $cart
+            'cart' => $cart->getCart()
         ]);
     }
 
@@ -55,7 +55,7 @@ class ShoppingCartController extends Controller
         $cart->removeItem($id);
 
         return view('shopping-cart')->with([
-            'cart' => $cart
+            'cart' => $cart->getCart()
         ]);
     }
 
