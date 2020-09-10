@@ -52,10 +52,10 @@ class Cart
     }
 
     /**
-     * Undocumented function
+     * Sets the quantity of a certain item in the shopping cart
      *
-     * @param [type] $id
-     * @param [type] $quantity
+     * @param int $id
+     * @param int $quantity
      * @return void
      */
     public function setQuantity(Request $request, $id, $quantity)
@@ -84,9 +84,9 @@ class Cart
     }
 
     /**
-     * Undocumented function
+     * Deleted a certain item from the shoppingcart
      *
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function removeItem($id)
@@ -99,7 +99,9 @@ class Cart
     }
 
     /**
-     * Get total quantity of every product
+     * Gets the total quantity of all products in the shoppingcart
+     *
+     * @return $totalQuantity
      */
     public function getTotalQuantity()
     {
@@ -112,7 +114,9 @@ class Cart
     }
 
     /**
-     * Get total price of every product
+     * Gets the total price of every product in the shoppingcart
+     *
+     * @return $totalPrice
      */
     public function getTotalPrice()
     {
@@ -123,6 +127,11 @@ class Cart
         return $totalPrice;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function getCart()
     {
         return Session::has('cart') ? Session::get('cart') : null;
