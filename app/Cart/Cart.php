@@ -128,7 +128,7 @@ class Cart
     }
 
     /**
-     * Undocumented function
+     * Gets the cart
      *
      * @return void
      */
