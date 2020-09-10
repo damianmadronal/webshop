@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 use DB;
 
 use Session;
@@ -19,8 +20,8 @@ class ProductController extends Controller
      */
     public function productOverview($id)
     {
-        $categoryName = DB::table('category')->get()->where('id', $id)->pluck('name');
-        $products = DB::table('product')->get()->where('category_id', $id);
+        $categoryName = Category::where('id', $id)->pluck('name');
+        $products = Product::where('category_id', $id)->get();
 
         return view('product_overview', ['products' => $products, 'categoryName' => $categoryName]);
     }
@@ -33,13 +34,14 @@ class ProductController extends Controller
      */
     public function productIndex($id)
     {
-        $product = DB::table('product')->get()->where('id', $id)[$id - 1];
+        $product = Product::where('id', $id)->get();
 
-        return view('product', ['product' => $product]);
+
+        return view('product', ['product' => $product[0]]);
     }
 
     /**
-     * cool
+     * Adds a product to the shoppingcart
      *
      * @param Request $request
      * @param int $id
