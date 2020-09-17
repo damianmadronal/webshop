@@ -9,8 +9,9 @@
     @endif
     <div class="row">
         <div class="col">
+        {{-- {{dd($cart)}} --}}
         @if($cart != null)
-            @foreach($cart->items as $product)
+            @foreach($cart->getItems() as $product)
                 <div class="cart-item-container">
                     <div class="row py-5">
                         <div class="col">

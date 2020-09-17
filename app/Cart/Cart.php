@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class Cart
 {
-    public $items = [];
-    public $quantity = 0;
-    public $price = 0;
+    private $items = [];
+    private $quantity = 0;
+    private $price = 0;
 
     public function __construct()
     {
@@ -94,7 +94,6 @@ class Cart
 
         if (empty($this->items)) {
             Session::forget("cart");
-            $request->session()->put('cart', null);
         } else {
             $request->session()->put('cart', $this);
         }
@@ -136,5 +135,20 @@ class Cart
     public function getCart()
     {
         return Session::has('cart') ? Session::get('cart') : null;
+    }
+
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    public function getquantity()
+    {
+        return $this->quantity;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

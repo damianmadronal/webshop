@@ -6,6 +6,7 @@ use Session;
 use App\Cart\Cart;
 use DB;
 use App\Order;
+use App\OrdersProduct;
 
 
 use Illuminate\Http\Request;
@@ -68,10 +69,22 @@ class ShoppingCartController extends Controller
     {
         $cart = Session::get('cart');
 
-        Order::create([
-            'cart' => serialize($cart),
-            'user_id' => Auth()->user()->id
-        ]);
+        $cart = new cart();
+        $user = auth()->user();
+
+        $order = new Order();
+        $order->total_price = $cart->getTotalPrice();
+        $order->user_id = $user->id;
+        $order->save();
+
+        foreach ($cart->getItems() as $item) {
+            $orderProduct = new OrdersProduct;
+            $orderProduct->product_id = $item['item']['id'];
+            $orderProduct->order_id = $order->id;
+            $orderProduct->quantity = $item['quantity'];
+            $orderProduct->price = $item['price'];
+            $orderProduct->save();
+        }
 
         Session::forget('cart');
 

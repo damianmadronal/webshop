@@ -20,10 +20,10 @@ class ProductController extends Controller
      */
     public function productOverview($id)
     {
-        $categoryName = Category::where('id', $id)->pluck('name');
-        $products = Product::where('category_id', $id)->get();
 
-        return view('product_overview', ['products' => $products, 'categoryName' => $categoryName]);
+        $category = Category::find($id);
+
+        return view('product_overview', ['category' => $category]);
     }
 
     /**
@@ -34,10 +34,9 @@ class ProductController extends Controller
      */
     public function productIndex($id)
     {
-        $product = Product::where('id', $id)->get();
+        $product = Product::find($id);
 
-
-        return view('product', ['product' => $product[0]]);
+        return view('product', ['product' => $product]);
     }
 
     /**

@@ -8,10 +8,11 @@
                 <th>Order ID</th>
                 <th>Total Price</th>
             </tr>
+            {{-- {{dd($orders)}} --}}
             @foreach ($orders as $order)
                 <tr class="order-list">
-                    <td>{{ $order->id }}</td>
-                    <td>&euro;{{ unserialize($order->cart)->getTotalPrice() }},-</td>
+                    <td><a href="/order/{{$order->id}}">{{ $order->id }}</a></td>
+                    <td>&euro;{{$order->total_price}},-</td>
                 </tr>
             @endforeach
         </table>

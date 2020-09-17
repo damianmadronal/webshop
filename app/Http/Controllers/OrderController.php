@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Order;
+use App\OrdersProduct;
 
 class OrderController extends Controller
 {
@@ -21,5 +22,12 @@ class OrderController extends Controller
         $orders = Order::where('user_id', $userId)->get();
 
         return view('orders', ['orders' => $orders]);
+    }
+
+    public function orderDetails($id)
+    {
+        $order = Order::find($id)->products;
+
+        return view('order_details', ['order' => $order, 'orderId' => $id]);
     }
 }
