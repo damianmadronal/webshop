@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'shoppingCartController@order',
         'as' => 'product.order'
     ]);
+    Route::get('order/{id}', 'orderController@orderDetails');
 
     Route::get('/orders', 'OrderController@index');
 });
