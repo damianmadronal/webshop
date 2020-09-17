@@ -49,10 +49,10 @@ class ShoppingCartController extends Controller
      * @param int $id
      * @return void
      */
-    public function deleteItem($id)
+    public function deleteItem(Request $request, $id)
     {
         $cart = new Cart();
-        $cart->removeItem($id);
+        $cart->removeItem($request, $id);
 
         return view('shopping-cart')->with([
             'cart' => $cart->getCart()

@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class Cart
 {
     public $items = [];
-
     public $quantity = 0;
     public $price = 0;
 
@@ -61,7 +60,7 @@ class Cart
     public function setQuantity(Request $request, $id, $quantity)
     {
         if ($quantity <= 0) {
-            $this->removeItem($id);
+            $this->removeItem($request, $id);
             return;
         }
 
@@ -89,12 +88,15 @@ class Cart
      * @param int $id
      * @return void
      */
-    public function removeItem($id)
+    public function removeItem(Request $request, $id)
     {
         unset($this->items[$id]);
 
         if (empty($this->items)) {
             Session::forget("cart");
+            $request->session()->put('cart', null);
+        } else {
+            $request->session()->put('cart', $this);
         }
     }
 
@@ -105,7 +107,6 @@ class Cart
      */
     public function getTotalQuantity()
     {
-
         $totalQuantity = 0;
         foreach ($this->items as $product) {
             $totalQuantity += $product['quantity'];
